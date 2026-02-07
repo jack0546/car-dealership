@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | AERODYNAMIC</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        .service-section {
+            padding: 120px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="scrolled">
+        <div class="logo">AERODYNAMIC</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Inventory</a>
+            <a href="services.html" style="color: var(--primary);">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="about-hero"
+        style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=2560') center/cover;">
+        <h1>Luxury <span>Services</span></h1>
+    </header>
+
+    <main class="service-section">
+        <div class="service-card glass">
+            <h3>Financing & Leasing</h3>
+            <p>Bespoke financial solutions tailored to your unique portfolio. We work with elite lending institutions to
+                provide the most competitive rates for high-value acquisitions.</p>
+            <a href="contact.html" class="btn btn-primary">Apply Now</a>
+        </div>
+        <div class="service-card glass">
+            <h3>White-Glove Delivery</h3>
+            <p>Our enclosed transport service ensures your new vehicle arrives in showroom condition, no matter where
+                you are in the world. Fully insured and GPS tracked.</p>
+            <a href="contact.html" class="btn glass">Learn More</a>
+        </div>
+        <div class="service-card glass">
+            <h3>Elite Maintenance</h3>
+            <p>Maintain your vehicle's peak performance at our state-of-the-art service center. Our factory-certified
+                technicians use only genuine OEM parts.</p>
+            <a href="contact.html" class="btn glass">Book Service</a>
+        </div>
+        <div class="service-card glass">
+            <h3>Trade-in Appraisals</h3>
+            <p>Receive a fair and competitive market evaluation for your current vehicle. We specialize in high-end
+                trade-ins and collection liquidations.</p>
+            <a href="contact.html" class="btn glass">Get Appraisal</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2024 AERODYNAMIC. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="static/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AERODYNAMIC</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        .contact-container {
+            padding: 150px 5% 100px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+        }
+
+        .info-item h4 {
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: #111;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="scrolled">
+        <div class="logo">AERODYNAMIC</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Inventory</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" style="color: var(--primary);">Contact</a>
+        </div>
+    </nav>
+
+    <main class="contact-container">
+        <div class="contact-info">
+            <h2>Get in <span>Touch</span></h2>
+            <div class="info-item">
+                <h4>Showroom Location</h4>
+                <p>123 Luxury Lane, Suite 100<br>Beverly Hills, CA 90210</p>
+            </div>
+            <div class="info-item">
+                <h4>Hours of Operation</h4>
+                <p>Mon - Fri: 9:00 AM - 7:00 PM<br>Saturday: 10:00 AM - 5:00 PM<br>Sunday: By Appointment Only</p>
+            </div>
+            <div class="info-item">
+                <h4>Connect</h4>
+                <p>Phone: +233532340875<br>Email: <a href="mailto:narhsnazzisco@gmail.com"
+                        style="color: var(--primary); text-decoration: none;">narhsnazzisco@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div>
+            <div class="car-details-card glass">
+                <h3>Global Inquiry Form</h3>
+                <p class="text-muted" style="margin-bottom: 2rem;">Our concierge team will respond to your request
+                    within 2 hours.</p>
+                <form id="global-contact-form">
+                    <div class="form-group"><input type="text" name="name" placeholder="Full Name" required></div>
+                    <div class="form-group"><input type="email" name="email" placeholder="Email Address" required></div>
+                    <div class="form-group">
+                        <select name="subject" style="width: 100%;">
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Financing Question">Financing Question</option>
+                            <option value="Trade-in Evaluation">Trade-in Evaluation</option>
+                            <option value="Service Request">Service Request</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><textarea name="message" placeholder="Your Message" rows="6"
+                            required></textarea></div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Message</button>
+                </form>
+            </div>
+            <div class="map-placeholder">
+                <p class="text-muted">Interactive Map Placeholder</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2024 AERODYNAMIC. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="static/script.js"></script>
+</body>
+
+</html>
