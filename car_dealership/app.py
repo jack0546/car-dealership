@@ -14,6 +14,14 @@ if not os.path.exists(DB_PATH):
 # Database Configuration - Detection between local and production
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
+@app.route('/api/seed', methods=['GET'])
+def manual_seed():
+    try:
+        init_db()
+        return jsonify({"success": True, "message": "Database initialized and seeded"}), 200
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
 def get_db_connection():
     if DATABASE_URL:
         # For production use with PostgreSQL (requires psycopg2)
@@ -33,32 +41,59 @@ def get_cars():
     make = request.args.get('make')
     
     conn = get_db_connection()
+    is_postgres = os.environ.get('DATABASE_URL') is not None
+    placeholder = "%s" if is_postgres else "?"
+    
     query = "SELECT * FROM cars WHERE 1=1"
     params = []
     
     if featured:
-        query += " AND featured = ?"
-        params.append(1 if featured.lower() == 'true' else 0)
+        query += f" AND featured = {placeholder}"
+        params.append(True if featured.lower() == 'true' else False)
     
     if make:
-        query += " AND make LIKE ?"
+        query += f" AND make LIKE {placeholder}"
         params.append(f"%{make}%")
         
-    cars = conn.execute(query, params).fetchall()
-    conn.close()
-    
-    return jsonify([dict(ix) for ix in cars])
+    try:
+        if is_postgres:
+            import psycopg2.extras
+            cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+            cursor.execute(query, params)
+            cars = cursor.fetchall()
+            results = [dict(ix) for ix in cars]
+        else:
+            cars = conn.execute(query, params).fetchall()
+            results = [dict(ix) for ix in cars]
+        
+        conn.close()
+        return jsonify(results)
+    except Exception as e:
+        if conn: conn.close()
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/cars/<int:car_id>', methods=['GET'])
 def get_car(car_id):
     conn = get_db_connection()
-    car = conn.execute("SELECT * FROM cars WHERE id = ?", (car_id,)).fetchone()
-    conn.close()
+    is_postgres = os.environ.get('DATABASE_URL') is not None
+    placeholder = "%s" if is_postgres else "?"
     
-    if car is None:
-        return jsonify({"error": "Car not found"}), 404
+    try:
+        if is_postgres:
+            import psycopg2.extras
+            cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+            cursor.execute(f"SELECT * FROM cars WHERE id = {placeholder}", (car_id,))
+            car = cursor.fetchone()
+        else:
+            car = conn.execute(f"SELECT * FROM cars WHERE id = {placeholder}", (car_id,)).fetchone()
         
-    return jsonify(dict(car))
+        conn.close()
+        if car is None:
+            return jsonify({"error": "Car not found"}), 404
+        return jsonify(dict(car))
+    except Exception as e:
+        if conn: conn.close()
+        return jsonify({"error": str(e)}), 500
 
 import smtplib
 from email.mime.text import MIMEText

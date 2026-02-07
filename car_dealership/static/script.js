@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // detect if we're running locally or on the web
 const API_BASE_URL = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
     ? 'http://127.0.0.1:5000'
-    : 'https://your-backend-api.onrender.com'; // Replace this after deploying to Render
+    : 'https://car-dealership-mrzq.onrender.com';
 
 async function fetchCars(featuredOnly = false) {
     const endpoint = featuredOnly ? `${API_BASE_URL}/api/cars?featured=true` : `${API_BASE_URL}/api/cars`;
